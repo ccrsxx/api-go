@@ -44,6 +44,7 @@ jobs:
           network_name="monitoring"
 
           if [ -z "$(docker network ls --filter name=${network_name} --format '{{.Name}}')" ]; then
+            echo "Network '$network_name' does not exist. Creating..."
             docker network create "$network_name"
           else
             echo "Network '$network_name' already exists."
